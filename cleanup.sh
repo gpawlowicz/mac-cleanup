@@ -28,6 +28,7 @@ sudo rm -rfv /Library/Logs/DiagnosticReports/* &>/dev/null
 sudo rm -rfv /Library/Logs/Adobe/* &>/dev/null
 rm -rfv ~/Library/Containers/com.apple.mail/Data/Library/Logs/Mail/* &>/dev/null
 rm -rfv ~/Library/Logs/CoreSimulator/* &>/dev/null
+rm -rfv ~/Library/Caches/com.apple.dt.XCode/* &>/dev/null
 
 echo 'Clear Adobe Cache Files...'
 sudo rm -rfv ~/Library/Application\ Support/Adobe/Common/Media\ Cache\ Files/* &>/dev/null
@@ -38,9 +39,12 @@ rm -rfv ~/Music/iTunes/iTunes\ Media/Mobile\ Applications/* &>/dev/null
 echo 'Remove iOS Device Backups...'
 rm -rfv ~/Library/Application\ Support/MobileSync/Backup/* &>/dev/null
 
-echo 'Cleanup XCode Derived Data and Archives...'
+echo 'Cleanup Xcode Derived Data and Archives...'
 rm -rfv ~/Library/Developer/Xcode/DerivedData/* &>/dev/null
 rm -rfv ~/Library/Developer/Xcode/Archives/* &>/dev/null
+
+echo 'Cleanup Xcode iOS DeviceSupport ...'
+rm -rfv ~/Library/Developer/Xcode/iOS DeviceSupport/* &>/dev/null
 
 echo 'Cleanup Homebrew Cache...'
 brew cleanup --force -s &>/dev/null
@@ -58,6 +62,9 @@ if type "docker" > /dev/null; then
     docker volume prune -f
     docker network prune -f
 fi
+
+echo 'Cleanup Spotify Cache...'
+rm -rfv ~/Library/Caches/com.spotify.client/Data/* &>/dev/null
 
 echo 'Purge inactive memory...'
 sudo purge
