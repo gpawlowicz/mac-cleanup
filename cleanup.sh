@@ -66,6 +66,9 @@ fi
 echo 'Cleanup Spotify Cache...'
 rm -rfv ~/Library/Caches/com.spotify.client/Data/* &>/dev/null
 
+echo 'Cleanup Carthage Cache...'
+rm -rfv ~/Library/Caches/org.carthage.CarthageKit/* &>/dev/null
+
 echo 'Purge inactive memory...'
 sudo purge
 
